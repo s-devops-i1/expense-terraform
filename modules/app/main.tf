@@ -9,17 +9,18 @@ resource "aws_instance" "instance" {
 }
 
 resource "null_resource" "ansible" {
-
   provisioner "remote-exec" {
 
     connection {
       type     = "ssh"
-      user     = var.user
-      password = var.pwd
+      user     = var.ssh_user
+      password = var.ssh_pass
       host     = aws_instance.instance.public_ip
     }
 
-    inline = [ "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-terraform.git -e env=${var.env} -e role_name=${var.component} expense-play.yml"
+    inline = [
+      "sudo pip3.22 install ansible",
+      "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-terraform.git -e env=${var.env} -e role_name=${var.component} expense-play.yml"
     ]
   }
 }

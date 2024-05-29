@@ -1,6 +1,6 @@
 variable "instance_type" {}
 variable "component" {}
-variable "user" {}
-variable "pwd" {}
+variable "ssh_user" {}
+variable "ssh_pass" {}
 variable "env" {}
 variable "zone_id" {}

@@ -1,5 +1,5 @@
 env = "dev"
 instance_type = "t3.small"
-user = "ec2-user"
-pwd  = "DevOps321"
+ssh_user = "ec2-user"
+ssh_pass  = "DevOps321"
 zone_id = "Z10377495CKDE7OXJB1E"
