@@ -11,6 +11,8 @@ resource "aws_instance" "instance" {
 resource "null_resource" "ansible" {
   provisioner "remote-exec" {
 
+    depends_on = [ aws_instance.instance]
+
     connection {
       type     = "ssh"
       user     = var.ssh_user
