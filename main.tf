@@ -4,6 +4,7 @@ module "frontend" {
   component  = "frontend"
   zone_id    = var.zone_id
   env        = var.env
+  vault_token = var.vault_token
 }
 
 module "backend" {
@@ -12,6 +13,7 @@ module "backend" {
   component  = "backend"
   zone_id    = var.zone_id
   env        = var.env
+  vault_token = var.vault_token
 }
 
 module "mysql" {
@@ -20,4 +22,5 @@ module "mysql" {
   component  = "mysql"
   zone_id    = var.zone_id
   env        = var.env
+  vault_token = var.vault_token
 }
