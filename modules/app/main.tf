@@ -23,7 +23,7 @@ resource "aws_instance" "instance" {
 
 resource "null_resource" "ansible" {
 
-  depends_on = [ aws_instance.instance]
+
   provisioner "remote-exec" {
 
 
