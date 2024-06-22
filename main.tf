@@ -26,5 +26,5 @@ module "mysql" {
   component  = "mysql"
   zone_id    = var.zone_id
   env        = var.env
-  vault_token = var.vault_token
+
 }
