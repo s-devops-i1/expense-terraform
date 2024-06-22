@@ -40,7 +40,7 @@ resource "null_resource" "ansible" {
       "sudo pip3.9 install hvac",
       "sudo pip install hvac",
       "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-ansible.git -e env=${var.env} -e role_name=${var.component} get-secrets.yml -e vault_token=${var.vault_token} ",
-       "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-ansible.git -e env=${var.env} -e role_name=${var.component} expense-play.yml -e @secrets.json -e @app.json",
+       "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-ansible.git -e env=${var.env} -e role_name=${var.component} expense-play.yml -e ansible_user=ec2-user -e ansible_password=DevOps321",
        "rm -f ~/secrets.json ~/app.json"
     ]
   }
