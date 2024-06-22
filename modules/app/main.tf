@@ -32,7 +32,7 @@ resource "null_resource" "ansible" {
       type     = "ssh"
       user     = jsondecode(data.vault_generic_secret.ssh.data_json).ansible_user
       password = jsondecode(data.vault_generic_secret.ssh.data_json).ansible_password
-      host     = aws_instance.instance.public_ip
+      host     = aws_instance.instance.private_ip
     }
 
     inline = [
@@ -40,7 +40,6 @@ resource "null_resource" "ansible" {
       "sudo pip3.9 install hvac",
       "sudo pip install hvac",
       "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-ansible.git -e env=${var.env} -e role_name=${var.component} get-secrets.yml -e vault_token=${var.vault_token} "
-#       "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-ansible.git -e env=${var.env} -e role_name=${var.component} get-secrets.yml -e vault_token=${var.vault_token} ",
 #       "ansible-pull -i localhost, -U https://github.com/s-devops-i1/expense-ansible.git -e env=${var.env} -e role_name=${var.component} expense-play.yml -e @secrets.json -e @app.json",
 #       "rm -f ~/secrets.json ~/app.json"
     ]
