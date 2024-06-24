@@ -18,8 +18,27 @@ resource "aws_subnet" "frontend" {
   }
 }
 
+resource "aws_subnet" "backend" {
+  count                =  length(var.backend_subnets)
+  vpc_id               =  aws_vpc.dev.id
+  cidr_block           =  var.backend_subnets[count.index]
+  availability_zone    =  var.availability_zones[count.index]
 
+  tags = {
+    Name = "${var.env}-backend-subnets-${count.index+1}"
+  }
+}
 
+resource "aws_subnet" "db" {
+  count                =  length(var.db_subnets)
+  vpc_id               =  aws_vpc.dev.id
+  cidr_block           =  var.db_subnets[count.index]
+  availability_zone    =  var.availability_zones[count.index]
+
+  tags = {
+    Name = "${var.env}-db-subnets-${count.index+1}"
+  }
+}
 
 resource "aws_vpc_peering_connection" "peer" {
   peer_vpc_id   = var.default_vpc_id
