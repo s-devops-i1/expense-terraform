@@ -29,6 +29,14 @@
 #   vault_token = var.vault_token
 # }
 module "vpc" {
-  source = "./modules/vpc"
-  env    = var.env
+  source                     = "./modules/vpc"
+  env                        = var.env
+  default_cidr_block         = var.default_cidr_block
+  vpc_peering_connection_id  = var.vpc_peering_connection_id
+  default_route_table_id     = var.default_route_table_id
+  main_cidr_block            = var.main_cidr_block
 }
+
+
+
+
