@@ -1,5 +1,5 @@
 resource "aws_vpc" "dev" {
-  cidr_block       = "10.10.0.0/24"
+  cidr_block       = var.main_cidr_block
 
 
   tags = {
@@ -9,7 +9,7 @@ resource "aws_vpc" "dev" {
 
 resource "aws_subnet" "zone-1" {
   vpc_id     = aws_vpc.dev.id
-  cidr_block = "10.10.0.0/24"
+  cidr_block = var.subnet_cidr_block
 
   tags = {
     Name = "${var.env}-subnet"
@@ -17,7 +17,7 @@ resource "aws_subnet" "zone-1" {
 }
 
 resource "aws_vpc_peering_connection" "peer" {
-  peer_vpc_id   = "vpc-0d777bc0eeb02d730"
+  peer_vpc_id   = var.default_vpc_id
   vpc_id        = aws_vpc.dev.id
   auto_accept   = true
 
