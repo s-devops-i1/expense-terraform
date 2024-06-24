@@ -6,3 +6,8 @@ variable "main_cidr_block" {}
 variable "subnet_cidr_block" {}
 variable "default_vpc_id" {}
 
+variable "frontend_subnets" {}
+variable "backend_subnets" {}
+variable "db_subnets" {}
+variable "availability_zones" {}
+

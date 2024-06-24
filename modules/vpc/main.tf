@@ -7,14 +7,19 @@ resource "aws_vpc" "dev" {
   }
 }
 
-resource "aws_subnet" "zone-1" {
-  vpc_id     = aws_vpc.dev.id
-  cidr_block = var.subnet_cidr_block
+resource "aws_subnet" "frontend" {
+  count                =  length(var.frontend_subnets)
+  vpc_id               =  aws_vpc.dev.id
+  cidr_block           =  var.frontend_subnets[count.index]
+  availability_zone    =  var.availability_zones[count.index]
 
   tags = {
-    Name = "${var.env}-subnet"
+    Name = "${var.env}-frontend-subnets-${count.index+1}"
   }
 }
+
+
+
 
 resource "aws_vpc_peering_connection" "peer" {
   peer_vpc_id   = var.default_vpc_id

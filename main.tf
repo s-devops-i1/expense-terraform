@@ -39,6 +39,8 @@ module "vpc" {
   main_cidr_block            = var.main_cidr_block
   subnet_cidr_block          = var.subnet_cidr_block
   default_vpc_id             = var.default_vpc_id
+
+
 }
 
 
