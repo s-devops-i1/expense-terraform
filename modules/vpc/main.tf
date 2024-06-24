@@ -22,7 +22,7 @@ resource "aws_vpc_peering_connection" "peer" {
   auto_accept   = true
 
   tags  = {
-    Name = "${var.env}-peer"
+    Name = "${var.env}-peering"
   }
 }
 
