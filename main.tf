@@ -7,7 +7,7 @@ module "frontend" {
   zone_id    = var.zone_id
   env        = var.env
   vault_token = var.vault_token
-  subnets     = module.vpc.db_subnet
+  subnets     = module.vpc.frontend_subnet
   vpc_id      = module.vpc.vpc_id
 }
 
@@ -20,7 +20,7 @@ module "backend" {
   zone_id    = var.zone_id
   env        = var.env
   vault_token = var.vault_token
-  subnets     = module.vpc.db_subnet
+  subnets     = module.vpc.backend_subnet
   vpc_id      = module.vpc.vpc_id
 }
 
