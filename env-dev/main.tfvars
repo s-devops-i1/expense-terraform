@@ -12,6 +12,7 @@ default_vpc_id    = "vpc-0d777bc0eeb02d730"
 frontend_subnets     = ["10.10.0.0/28", "10.10.0.16/28"]
 backend_subnets      = ["10.10.0.32/28", "10.10.0.48/28"]
 db_subnets           = ["10.10.0.64/28", "10.10.0.80/28"]
+public_subnets       = ["10.10.0.96/28", "10.10.0.112/28"]
 availability_zones   = ["us-east-1a", "us-east-1b"]
 
 
