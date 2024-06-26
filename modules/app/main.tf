@@ -22,7 +22,7 @@ egress {
 }
 
 resource "aws_instance" "instance" {
-  ami                    = data.aws_ami.ami.image_id
+  ami                    = "ami-041e2ea9402c46c32"
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.main.id]
   subnet_id              =  var.subnets[0]
