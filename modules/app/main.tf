@@ -42,6 +42,11 @@ resource "aws_instance" "instance" {
     env     = var.env
 
   }
+  lifecycle {
+    ignore_changes = [
+      ami,
+    ]
+  }
 
 }
 
