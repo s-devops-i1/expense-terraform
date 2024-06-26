@@ -47,7 +47,10 @@ resource "aws_route_table" "frontend" {
     Name = "${var.env}-frontend-rt-${count.index+1}"
   }
 }
-
+resource "aws_route_table_association" "frontend" {
+  subnet_id      = aws_subnet.frontend[count.index].id
+  route_table_id = aws_route_table.frontend[count.index].id
+}
 
 resource "aws_subnet" "backend" {
   count                =  length(var.backend_subnets)
@@ -70,6 +73,11 @@ resource "aws_route_table" "backend" {
   tags = {
     Name = "${var.env}-backend-rt-${count.index+1}"
   }
+}
+
+resource "aws_route_table_association" "backend" {
+  subnet_id      = aws_subnet.backend[count.index].id
+  route_table_id = aws_route_table.backend[count.index].id
 }
 
 
@@ -97,6 +105,10 @@ resource "aws_route_table" "db" {
   }
 }
 
+resource "aws_route_table_association" "db" {
+  subnet_id      = aws_subnet.db[count.index].id
+  route_table_id = aws_route_table.db[count.index].id
+}
 
 resource "aws_subnet" "public" {
   count                =  length(var.public_subnets)
@@ -121,6 +133,10 @@ resource "aws_route_table" "public" {
   }
 }
 
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public[count.index].id
+  route_table_id = aws_route_table.public[count.index].id
+}
 
 
 # resource "aws_route" "main" {
