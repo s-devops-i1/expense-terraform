@@ -51,6 +51,14 @@ resource "aws_subnet" "public" {
   }
 }
 
+resource "aws_internet_gateway" "igw" {
+  vpc_id = aws_vpc.dev.id
+
+  tags = {
+    Name = "${var.env}-igw"
+  }
+}
+
 
 resource "aws_vpc_peering_connection" "peer" {
   peer_vpc_id   = var.default_vpc_id
