@@ -35,7 +35,6 @@ resource "aws_subnet" "public" {
     Name = "${var.env}-public-subnets-${count.index+1}"
   }
 }
-
 resource "aws_route_table" "public" {
   count                =  length(var.public_subnets)
   vpc_id = aws_vpc.dev.id
@@ -48,8 +47,6 @@ resource "aws_route_table" "public" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
-
-
   tags = {
     Name = "${var.env}-public-rt-${count.index+1}"
   }
@@ -64,7 +61,6 @@ resource "aws_nat_gateway" "ngw" {
   count                =  length(var.public_subnets)
   allocation_id = aws_eip.nat-ip[count.index].id
   subnet_id     = aws_subnet.public[count.index].id
-
   tags = {
     Name = "${var.env}-ngw-${count.index+1}"
   }
