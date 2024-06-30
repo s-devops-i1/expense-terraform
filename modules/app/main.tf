@@ -107,3 +107,14 @@ resource "aws_lb_target_group_attachment" "main" {
   port             = var.app_port
 }
 
+resource "aws_lb_listener" "front_end" {
+  count              = var.lb_needed ? 1 : 0
+  load_balancer_arn = aws_lb.main[0].arn
+  port              = var.app_port
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.main[0].arn
+  }
+}
