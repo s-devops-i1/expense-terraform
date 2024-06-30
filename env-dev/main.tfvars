@@ -14,5 +14,5 @@ backend_subnets      = ["10.10.0.32/28", "10.10.0.48/28"]
 db_subnets           = ["10.10.0.64/28", "10.10.0.80/28"]
 public_subnets       = ["10.10.0.96/28", "10.10.0.112/28"]
 availability_zones   = ["us-east-1a", "us-east-1b"]
-
-
+bastion_nodes        = ["172.31.36.24/32"]
+prometheus           = ["172.31.37.201/32"]
