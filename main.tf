@@ -17,6 +17,7 @@ module "frontend" {
   prometheus_nodes = var.prometheus_nodes
   server_app_port_sg_cidr = var.public_subnets
   lb_app_port_sg_cidr     = ["0.0.0.0/0"]
+  certificate_arn         = var.certificate_arn
 }
 
 module "backend" {
