@@ -13,6 +13,7 @@ resource "aws_db_instance" "default" {
   publicly_accessible  = false
   db_subnet_group_name = aws_db_subnet_group.default.name
   skip_final_snapshot  = var.skip_final_snapshot
+  vpc_security_group_ids = [aws_security_group.main.id]
 }
 
 resource "aws_db_parameter_group" "main" {
