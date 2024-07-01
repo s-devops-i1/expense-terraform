@@ -9,7 +9,7 @@ resource "aws_db_instance" "default" {
   parameter_group_name = aws_db_parameter_group.main.name
   multi_az             = false
   allocated_storage    = var.allocated_storage
-  storage_throughput   = var.storage_type
+  storage_type         = var.storage_type
   publicly_accessible  = false
   db_subnet_group_name = aws_db_subnet_group.default.name
   skip_final_snapshot  = var.skip_final_snapshot
