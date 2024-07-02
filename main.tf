@@ -58,6 +58,7 @@ module "rds" {
   subnet_ids             = module.vpc.db_subnet
   vpc_id                 = module.vpc.vpc_id
   skip_final_snapshot    = true
+  kms_key_id             = var.kms_key_id
 }
 
 

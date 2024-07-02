@@ -17,3 +17,4 @@ availability_zones   = ["us-east-1a", "us-east-1b"]
 bastion_nodes        = ["172.31.36.24/32"]
 prometheus_nodes     = ["172.31.37.201/32"]
 certificate_arn      = "arn:aws:acm:us-east-1:471112569439:certificate/0a2be12a-fe37-450c-9e33-60ab13354353"
+kms_key_id           = "arn:aws:kms:us-east-1:471112569439:key/c7c50601-9e6e-408c-80fa-027b6baf7981"
