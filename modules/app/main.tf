@@ -48,6 +48,11 @@ resource "aws_instance" "instance" {
     }
   }
 
+  root_block_device {
+    encrypted = true
+  kms_key_id  = var.kms_key_id
+  }
+
   tags = {
     Name    = var.component
     monitor = "yes"
