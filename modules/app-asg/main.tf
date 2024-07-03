@@ -53,6 +53,12 @@ resource "aws_autoscaling_group" "main" {
     id      = aws_launch_template.main.id
     version = "$Latest"
   }
+
+  tag {
+    key                 = "Name"
+    value               = "${var.component}-${var.env}"
+    propagate_at_launch = true
+  }
 }
 
 resource "aws_autoscaling_policy" "main" {
