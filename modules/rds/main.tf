@@ -17,7 +17,7 @@ resource "aws_db_instance" "default" {
   kms_key_id             = var.kms_key_id
   storage_encrypted      = true
   backup_retention_period= 35
-  backup_window          = "07:00--8:00"
+  backup_window          = "09:46-10:16"
 }
 
 resource "aws_db_parameter_group" "main" {
