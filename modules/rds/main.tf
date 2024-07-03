@@ -16,6 +16,8 @@ resource "aws_db_instance" "default" {
   vpc_security_group_ids = [aws_security_group.main.id]
   kms_key_id             = var.kms_key_id
   storage_encrypted      = true
+  backup_retention_period= 35
+  backup_window          = "07:00--8:00"
 }
 
 resource "aws_db_parameter_group" "main" {
